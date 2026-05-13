@@ -1,809 +1,661 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ashutosh Kumar Singh | HSE Safety Professional</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
+    /* ── VARIABLES ─────────────────────────────── */
     :root {
       --ink: #0f1117;
-      --bg: #f5f2ec;
-      --accent: #c8410a;
-      --accent2: #e8a87c;
-      --steel: #2b3a4a;
+      --bg: #f0ece4;
+      --accent: #b83a08;
+      --accent2: #e09a64;
+      --steel: #1e2d3d;
       --muted: #6b7280;
       --line: #d4cfc6;
       --card: #ffffff;
       --highlight: #fff4ed;
+      --sidebar-w: 175pt;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    @media print {
-      body { background: white !important; }
-      .page { box-shadow: none !important; }
-      .sidebar { background: #1e2d3d !important; -webkit-print-color-adjust: exact; }
-    }
-
+    /* ── SCREEN BODY ───────────────────────────── */
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--ink);
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      min-height: 100vh;
+      padding: 24px 12px;
     }
 
-    /* ATS metadata (invisible but readable by parsers) */
+    /* ── ATS HIDDEN META ───────────────────────── */
     .ats-meta {
-      position: absolute;
-      left: -9999px;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
+      position: absolute; left: -9999px;
+      width: 1px; height: 1px; overflow: hidden;
     }
 
+    /* ── PAGE SHELL ────────────────────────────── */
     .page {
-      width: 100%;
-      max-width: 900px;
+      width: 210mm;
+      min-height: 297mm;
       background: var(--card);
-      box-shadow: 0 25px 80px rgba(0,0,0,0.15), 0 4px 20px rgba(0,0,0,0.08);
-      border-radius: 4px;
-      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
       display: grid;
-      grid-template-columns: 280px 1fr;
-      animation: pageIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      overflow: hidden;
+      animation: fadeUp .6s cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(16px); }
+      to   { opacity:1; transform:translateY(0); }
     }
 
-    @keyframes pageIn {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── SIDEBAR ─────────────────────────────── */
+    /* ══════════════════════════════════════════════
+       SIDEBAR
+    ══════════════════════════════════════════════ */
     .sidebar {
       background: var(--steel);
-      color: #e8edf2;
-      padding: 0 0 40px 0;
+      color: #dde5ed;
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
-    .photo-block {
+    /* Photo */
+    .photo-wrap {
       position: relative;
       width: 100%;
-      padding-top: 100%;
+      aspect-ratio: 1/1;
       overflow: hidden;
-      background: #162330;
+      background: #111c28;
+      flex-shrink: 0;
     }
-
-    .photo-block img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: grayscale(20%) contrast(1.05);
-      transition: filter 0.4s ease;
+    .photo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      filter: grayscale(15%) contrast(1.05);
+      display: block;
     }
-
-    .photo-block:hover img { filter: grayscale(0%) contrast(1); }
-
-    .photo-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 60px;
+    .photo-fade {
+      position: absolute; bottom:0; left:0; right:0; height:40px;
       background: linear-gradient(to top, var(--steel), transparent);
     }
 
-    .name-block {
-      padding: 24px 28px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    /* Name block */
+    .sb-name {
+      padding: 10pt 12pt 8pt;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-
-    .name-block h1 {
+    .sb-name h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.55rem;
+      font-size: 12.5pt;
       font-weight: 700;
       color: #fff;
-      line-height: 1.2;
+      line-height: 1.18;
       letter-spacing: -0.01em;
     }
-
-    .name-block .title {
-      margin-top: 6px;
-      font-size: 0.72rem;
+    .sb-name .jobtitle {
+      margin-top: 3pt;
+      font-size: 5.5pt;
       font-weight: 600;
-      letter-spacing: 0.14em;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--accent2);
     }
 
-    .s-section {
-      padding: 22px 28px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    .sb-sec {
+      padding: 8pt 12pt;
+      border-bottom: 1px solid rgba(255,255,255,0.055);
     }
+    .sb-sec:last-child { border-bottom: none; flex: 1; }
 
-    .s-section:last-child { border-bottom: none; }
-
-    .s-label {
-      font-size: 0.62rem;
+    .sb-lbl {
+      font-size: 5pt;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--accent2);
-      margin-bottom: 14px;
+      margin-bottom: 6pt;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5pt;
     }
-
-    .s-label::after {
+    .sb-lbl::after {
       content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(232,168,124,0.25);
+      flex: 1; height: 1px;
+      background: rgba(224,154,100,.22);
     }
 
-    /* Contact */
-    .contact-item {
+    /* Contact items */
+    .ci {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 10px;
-      font-size: 0.8rem;
-      color: #c8d4de;
-      line-height: 1.4;
+      gap: 5pt;
+      margin-bottom: 4.5pt;
+      font-size: 6.5pt;
+      color: #bfccd8;
+      line-height: 1.35;
     }
+    .ci svg { flex-shrink:0; margin-top:1pt; opacity:.65; }
+    .ci a { color: var(--accent2); text-decoration:none; }
+    .ci a:hover { text-decoration:underline; }
 
-    .contact-item svg {
-      flex-shrink: 0;
-      margin-top: 1px;
-      opacity: 0.7;
-    }
-
-    .contact-item a { color: var(--accent2); text-decoration: none; }
-    .contact-item a:hover { text-decoration: underline; }
-
-    /* Skills */
-    .skill-tag {
+    /* Skill tags */
+    .stag {
       display: inline-block;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 3px;
-      padding: 4px 10px;
-      font-size: 0.72rem;
-      color: #c8d4de;
-      margin: 3px 3px 3px 0;
-      font-family: 'DM Mono', monospace;
-      transition: background 0.2s;
-    }
-
-    .skill-tag:hover {
-      background: rgba(200,65,10,0.3);
-      border-color: var(--accent2);
-      color: #fff;
-    }
-
-    /* Education sidebar items */
-    .edu-item {
-      margin-bottom: 14px;
-    }
-
-    .edu-item .degree {
-      font-size: 0.78rem;
-      color: #e8edf2;
-      font-weight: 500;
-      line-height: 1.3;
-    }
-
-    .edu-item .inst {
-      font-size: 0.68rem;
-      color: var(--accent2);
-      margin-top: 2px;
-    }
-
-    .edu-item .year {
-      font-size: 0.65rem;
-      color: #8fa3b8;
-      font-family: 'DM Mono', monospace;
-      margin-top: 2px;
-    }
-
-    /* Personal */
-    .personal-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .pd-item .pd-label {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #8fa3b8;
-    }
-
-    .pd-item .pd-val {
-      font-size: 0.76rem;
-      color: #c8d4de;
-      margin-top: 2px;
-    }
-
-    /* Languages */
-    .lang-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .lang-name { font-size: 0.78rem; color: #e8edf2; }
-    .lang-level { font-size: 0.65rem; color: #8fa3b8; font-style: italic; }
-
-    .lang-bar {
-      width: 100%;
-      height: 3px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.07);
+      border: .5px solid rgba(255,255,255,0.12);
       border-radius: 2px;
-      margin-top: 5px;
-      overflow: hidden;
+      padding: 2pt 5pt;
+      font-size: 5.5pt;
+      color: #bfccd8;
+      margin: 2pt 2pt 0 0;
+      font-family: 'DM Mono', monospace;
     }
 
+    /* Education items */
+    .edu { margin-bottom: 5pt; }
+    .edu .deg  { font-size: 6.5pt; color: #dde5ed; font-weight: 500; line-height: 1.25; }
+    .edu .inst { font-size: 5.5pt; color: var(--accent2); margin-top:1pt; }
+    .edu .yr   { font-size: 5pt; color: #8fa3b8; font-family:'DM Mono',monospace; margin-top:1pt; }
+
+    /* Language bars */
+    .lang-row { margin-bottom: 5pt; }
+    .lang-top { display: flex; justify-content: space-between; margin-bottom: 2pt; }
+    .lang-name { font-size: 6.5pt; color: #dde5ed; }
+    .lang-lvl  { font-size: 5pt; color: #8fa3b8; font-style:italic; }
+    .lang-bar  { height: 2.5px; background: rgba(255,255,255,0.09); border-radius: 2px; overflow: hidden; }
     .lang-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       border-radius: 2px;
-      animation: barGrow 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-      animation-delay: 0.5s;
     }
 
-    @keyframes barGrow {
-      from { width: 0 !important; }
-    }
+    /* Personal grid */
+    .pers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4pt 6pt; }
+    .pd .pd-lbl { font-size: 4.8pt; text-transform:uppercase; letter-spacing:.09em; color:#8fa3b8; }
+    .pd .pd-val { font-size: 6.5pt; color:#bfccd8; margin-top:1pt; }
 
-    /* ── MAIN ─────────────────────────────────── */
+    /* ══════════════════════════════════════════════
+       MAIN
+    ══════════════════════════════════════════════ */
     .main {
-      padding: 40px 38px;
+      padding: 12pt 14pt 10pt;
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
-    /* Header accent bar */
-    .header-accent {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .job-code {
+    /* Top bar */
+    .top-bar { display: flex; align-items: center; gap: 8pt; margin-bottom: 7pt; }
+    .jobcode {
       font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 5.5pt;
       color: var(--accent);
       background: var(--highlight);
-      border: 1px solid #f0c09a;
-      border-radius: 3px;
-      padding: 4px 10px;
-      letter-spacing: 0.06em;
+      border: .5px solid #f0c09a;
+      border-radius: 2px;
+      padding: 2pt 6pt;
+      letter-spacing:.06em;
+      white-space: nowrap;
     }
-
-    .header-line {
-      flex: 1;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-    }
+    .top-line { flex:1; height:1.5px; background: linear-gradient(90deg, var(--accent), transparent); }
 
     /* Summary */
-    .summary-box {
+    .summary {
       background: var(--highlight);
-      border-left: 3px solid var(--accent);
-      padding: 16px 20px;
-      border-radius: 0 4px 4px 0;
-      margin-bottom: 30px;
+      border-left: 2.5px solid var(--accent);
+      padding: 6pt 9pt;
+      border-radius: 0 3px 3px 0;
+      margin-bottom: 8pt;
     }
+    .summary p { font-size: 6.5pt; line-height: 1.6; color: #3d3028; }
 
-    .summary-box p {
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: #3d3028;
-    }
+    /* Section */
+    .sec { margin-bottom: 7pt; }
 
-    /* Section headings */
-    .section {
-      margin-bottom: 28px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .section-head h2 {
+    .sec-head { display: flex; align-items: center; gap: 6pt; margin-bottom: 5pt; }
+    .sec-head h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
+      font-size: 9pt;
       font-weight: 700;
       color: var(--steel);
-      letter-spacing: -0.01em;
+      letter-spacing: -.01em;
+      white-space: nowrap;
     }
+    .sec-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .sec-line { flex:1; height:.8px; background: var(--line); }
 
-    .section-head .sh-line {
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    .section-head .sh-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* Experience cards */
-    .exp-card {
-      position: relative;
-      padding: 18px 20px 18px 20px;
-      margin-bottom: 16px;
-      border: 1px solid var(--line);
-      border-radius: 4px;
+    /* Experience card */
+    .xcard {
+      border: .8px solid var(--line);
+      border-radius: 3px;
       background: #fafaf8;
-      transition: box-shadow 0.2s, transform 0.2s;
+      padding: 5.5pt 8pt;
+      margin-bottom: 5pt;
+      position: relative;
     }
-
-    .exp-card:hover {
-      box-shadow: 0 6px 24px rgba(200,65,10,0.08);
-      transform: translateY(-1px);
-    }
-
-    .exp-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 16px; bottom: 16px;
-      width: 3px;
+    .xcard::before {
+      content:'';
+      position:absolute;
+      left:0; top:7pt; bottom:7pt;
+      width:2.5px;
       background: var(--accent);
-      border-radius: 0 2px 2px 0;
-      opacity: 0;
-      transition: opacity 0.2s;
+      border-radius:0 2px 2px 0;
+      opacity:0;
+      transition:opacity .2s;
     }
+    .xcard:hover::before { opacity:1; }
 
-    .exp-card:hover::before { opacity: 1; }
-
-    .exp-top {
+    .xtop {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 4px;
+      gap: 3pt;
+      margin-bottom: 1.5pt;
     }
-
-    .exp-role {
-      font-size: 0.9rem;
+    .xrole {
+      font-size: 7.5pt;
       font-weight: 600;
       color: var(--ink);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4pt;
     }
-
-    .exp-duration {
+    .xdur {
       font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 5pt;
       color: var(--accent);
       background: var(--highlight);
-      padding: 3px 8px;
-      border-radius: 3px;
+      padding: 1.5pt 5pt;
+      border-radius: 2px;
       white-space: nowrap;
     }
+    .xcmp  { font-size: 6.5pt; font-weight: 600; color: var(--steel); margin-bottom: 1.5pt; }
+    .xproj { font-size: 5.5pt; color: var(--muted); margin-bottom: 4pt; font-style: italic; line-height: 1.35; }
 
-    .exp-company {
-      font-size: 0.78rem;
+    /* Current badge */
+    .cbadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3pt;
+      font-size: 5pt;
       font-weight: 600;
-      color: var(--steel);
-      margin-bottom: 4px;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      color: #15803d;
+      background: #dcfce7;
+      border: .5px solid #86efac;
+      border-radius: 10pt;
+      padding: 1pt 5pt;
+    }
+    .cbadge::before {
+      content:'';
+      width:4px; height:4px;
+      border-radius:50%;
+      background:#15803d;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%,100%{ opacity:1; transform:scale(1); }
+      50%    { opacity:.5; transform:scale(.75); }
     }
 
-    .exp-project {
-      font-size: 0.73rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-      font-style: italic;
-    }
-
-    /* Responsibilities */
-    .resp-list {
+    /* Responsibility list */
+    .rlist {
       list-style: none;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4px 16px;
+      gap: 2pt 10pt;
     }
-
-    .resp-list li {
-      font-size: 0.73rem;
-      color: #4a4a4a;
-      line-height: 1.5;
+    .rlist.one { grid-template-columns: 1fr; }
+    .rlist li {
+      font-size: 5.8pt;
+      color: #404040;
+      line-height: 1.45;
       display: flex;
       align-items: flex-start;
-      gap: 6px;
+      gap: 3.5pt;
     }
-
-    .resp-list li::before {
+    .rlist li::before {
       content: '▸';
       color: var(--accent);
       flex-shrink: 0;
-      font-size: 0.65rem;
-      margin-top: 2px;
+      font-size: 5pt;
+      margin-top: 1.5pt;
     }
 
-    /* Single column resp for current */
-    .resp-list.single { grid-template-columns: 1fr; }
-
-    /* Interests */
-    .interest-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .interest-tag {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    /* Strengths/Interests */
+    .itags { display:flex; flex-wrap:wrap; gap:4pt; }
+    .itag {
+      display:flex;
+      align-items:center;
+      gap:3pt;
       background: var(--highlight);
-      border: 1px solid #f0c09a;
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 0.73rem;
+      border: .5px solid #f0c09a;
+      border-radius: 12pt;
+      padding: 2.5pt 8pt;
+      font-size: 5.5pt;
       color: #6b4226;
-      transition: background 0.2s;
-    }
-
-    .interest-tag:hover {
-      background: #f8ddc8;
     }
 
     /* Footer */
-    .resume-footer {
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
+    .rfooter {
+      margin-top: auto;
+      padding-top: 5pt;
+      border-top: .8px solid var(--line);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+    .rfooter .place { font-size: 5.5pt; color:var(--muted); }
+    .rfooter .sign  { font-family:'Playfair Display',serif; font-size: 8pt; color: var(--steel); font-style: italic; }
 
-    .resume-footer .place {
-      font-size: 0.72rem;
-      color: var(--muted);
+    /* ══════════════════════════════════════════════
+       PRINT — A4 exact
+    ══════════════════════════════════════════════ */
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        background: white;
+        padding: 0; margin: 0;
+      }
+      body { display: block; }
+
+      .page {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: unset;
+        box-shadow: none;
+        animation: none;
+        overflow: hidden;
+      }
+
+      .sidebar, .stag, .itag, .jobcode, .xdur, .summary,
+      .cbadge, .lang-fill, .sec-dot, .cbadge::before {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .xcard { break-inside: avoid; }
     }
 
-    .resume-footer .sign {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      color: var(--steel);
-      font-style: italic;
-    }
-
-    /* Current badge */
-    .current-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #15803d;
-      background: #dcfce7;
-      border: 1px solid #86efac;
-      border-radius: 20px;
-      padding: 2px 8px;
-      margin-left: 8px;
-    }
-
-    .current-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #15803d;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    @media (max-width: 700px) {
-      .page { grid-template-columns: 1fr; }
-      .sidebar { width: 100%; }
-      .photo-block { padding-top: 60%; }
-      .resp-list { grid-template-columns: 1fr; }
+    /* ══════════════════════════════════════════════
+       RESPONSIVE — TABLET
+    ══════════════════════════════════════════════ */
+    @media screen and (max-width: 820px) {
       body { padding: 0; }
-      .page { border-radius: 0; }
+      .page {
+        width: 100%;
+        min-height: unset;
+        grid-template-columns: 200px 1fr;
+        box-shadow: none;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       RESPONSIVE — MOBILE
+    ══════════════════════════════════════════════ */
+    @media screen and (max-width: 600px) {
+      body { padding: 0; background: #fff; }
+
+      .page {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: unset;
+        box-shadow: none;
+      }
+
+      /* Photo becomes wide banner */
+      .photo-wrap { aspect-ratio: 16/7; max-height: 150px; }
+
+      /* Scale up for readability */
+      .sb-name h1     { font-size: 18pt; }
+      .sb-name .jobtitle { font-size: 7.5pt; }
+      .sb-lbl         { font-size: 7pt; }
+      .ci             { font-size: 9pt; }
+      .stag           { font-size: 8pt; padding: 3pt 7pt; }
+      .edu .deg       { font-size: 9pt; }
+      .edu .inst      { font-size: 8pt; }
+      .edu .yr        { font-size: 7pt; }
+      .lang-name      { font-size: 9pt; }
+      .lang-lvl       { font-size: 7pt; }
+      .pd .pd-lbl     { font-size: 7pt; }
+      .pd .pd-val     { font-size: 8.5pt; }
+
+      .main { padding: 14pt 14pt; }
+      .top-bar { margin-bottom: 9pt; }
+      .jobcode { font-size: 7.5pt; }
+      .summary p { font-size: 9pt; }
+      .sec-head h2 { font-size: 12pt; }
+      .xrole { font-size: 10pt; }
+      .xcmp  { font-size: 9pt; }
+      .xproj { font-size: 7.5pt; }
+      .xdur  { font-size: 7pt; }
+      .rlist { grid-template-columns: 1fr; }
+      .rlist li { font-size: 8pt; }
+      .itag { font-size: 8pt; padding: 4pt 10pt; }
+      .rfooter .place { font-size: 8pt; }
+      .rfooter .sign  { font-size: 11pt; }
+      .sb-sec { padding: 10pt 14pt; }
     }
   </style>
 </head>
 <body>
 
-<!-- ATS-readable hidden metadata -->
+<!-- ATS hidden metadata -->
 <div class="ats-meta" aria-hidden="true">
   <p>Name: Ashutosh Kumar Singh</p>
   <p>Job Title: HSE Safety Officer | EHS Professional</p>
+  <p>Job Code: SIO/EHS</p>
   <p>Email: ashu7424961432@gmail.com</p>
   <p>Phone: 9973531728</p>
-  <p>Location: Barauli, Gopalganj, Bihar</p>
-  <p>Job :EHS officer</p>
+  <p>Location: Barauli, Gopalganj, Bihar | Current: J&K, India</p>
   <p>Total Experience: 6+ years in EHS/HSE</p>
-  <p>Skills: Safety Management, Risk Assessment, Incident Investigation, Work Permit System, Toolbox Talks, Emergency Response, EHS Training, MS Office</p>
+  <p>Current Employer: Apco Infratech – Safety Officer, Jammu Katra Road Project</p>
+  <p>Skills: Safety Management, Risk Assessment, Incident Investigation, Work Permit System, Toolbox Talks, Emergency Response, EHS Training, Root Cause Analysis, Hot Work, Confined Space, Height Work, First Aid, MS Office, MS Excel, PowerPoint</p>
 </div>
 
 <div class="page">
 
-  <!-- ── SIDEBAR ──────────────────── -->
+  <!-- ════ SIDEBAR ════ -->
   <aside class="sidebar">
 
-    <div class="photo-block">
-      <img
-        src="image.jpg"
-        alt="Ashutosh Kumar Singh – HSE Safety Professional"
-        onerror="this.src='https://ui-avatars.com/api/?name=Ashutosh+Kumar+Singh&size=400&background=2b3a4a&color=e8a87c&bold=true&font-size=0.35'"
-      />
-      <div class="photo-overlay"></div>
+    <div class="photo-wrap">
+      <img src="image.jpg"
+           alt="Ashutosh Kumar Singh – HSE Safety Officer"
+           onerror="this.src='https://ui-avatars.com/api/?name=Ashutosh+Kumar+Singh&size=400&background=1e2d3d&color=e09a64&bold=true&font-size=0.34'"/>
+      <div class="photo-fade"></div>
     </div>
 
-    <div class="name-block">
+    <div class="sb-name">
       <h1>Ashutosh<br/>Kumar Singh</h1>
-      <div class="title">HSE / EHS Safety Officer</div>
+      <div class="jobtitle">HSE / EHS Safety Officer</div>
     </div>
 
-    <!-- Contact -->
-    <div class="s-section">
-      <div class="s-label">Contact</div>
-
-      <div class="contact-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <div class="sb-sec">
+      <div class="sb-lbl">Contact</div>
+      <div class="ci">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Barauli, Gopalganj, Bihar
       </div>
-
-      <div class="contact-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.128 1.002.366 1.987.71 2.94a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.15-1.15a2 2 0 012.11-.45c.953.344 1.938.582 2.94.71A2 2 0 0122 16.92z"/></svg>
+      <div class="ci">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.128 1.002.366 1.987.71 2.94a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.15-1.15a2 2 0 012.11-.45c.953.344 1.938.582 2.94.71A2 2 0 0122 16.92z"/></svg>
         9973531728
       </div>
-
-      <div class="contact-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <div class="ci">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         <a href="mailto:ashu7424961432@gmail.com">ashu7424961432@gmail.com</a>
       </div>
-
-      <div class="contact-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        J&K, India (Current)
+      <div class="ci">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        J&amp;K, India (Current)
       </div>
     </div>
 
-    <!-- Core Skills -->
-    <div class="s-section">
-      <div class="s-label">Core Skills</div>
-      <div>
-        <span class="skill-tag">Risk Assessment</span>
-        <span class="skill-tag">Incident Investigation</span>
-        <span class="skill-tag">Work Permit System</span>
-        <span class="skill-tag">Toolbox Talks</span>
-        <span class="skill-tag">Emergency Response</span>
-        <span class="skill-tag">Safety Audits</span>
-        <span class="skill-tag">EHS Training</span>
-        <span class="skill-tag">Hot Work / Confined Space</span>
-        <span class="skill-tag">Height Work Safety</span>
-        <span class="skill-tag">First Aid</span>
-        <span class="skill-tag">MS Office / Excel</span>
-        <span class="skill-tag">Root Cause Analysis</span>
+    <div class="sb-sec">
+      <div class="sb-lbl">Core Skills</div>
+      <span class="stag">Risk Assessment</span>
+      <span class="stag">Incident Investigation</span>
+      <span class="stag">Work Permit System</span>
+      <span class="stag">Toolbox Talks</span>
+      <span class="stag">Emergency Response</span>
+      <span class="stag">Safety Audits</span>
+      <span class="stag">EHS Training</span>
+      <span class="stag">Hot Work / Confined Space</span>
+      <span class="stag">Height Work Safety</span>
+      <span class="stag">First Aid</span>
+      <span class="stag">MS Office / Excel</span>
+      <span class="stag">Root Cause Analysis</span>
+    </div>
+
+    <div class="sb-sec">
+      <div class="sb-lbl">Education</div>
+      <div class="edu"><div class="deg">B.Sc. (HSE)</div><div class="inst">Annamalai University</div><div class="yr">2022 · 63%</div></div>
+      <div class="edu"><div class="deg">B.A. in Geography</div><div class="inst">Annamalai University</div><div class="yr">2021</div></div>
+      <div class="edu"><div class="deg">Diploma – Health Safety &amp; Environment</div><div class="inst">NIFS Patna (Annamalai University)</div><div class="yr">2019</div></div>
+      <div class="edu"><div class="deg">Assistance of Fire Operator</div><div class="inst">NIFS Patna</div><div class="yr">2019</div></div>
+      <div class="edu"><div class="deg">Intermediate (BSEB)</div><div class="yr">2016 · 60%</div></div>
+      <div class="edu"><div class="deg">Matriculation (CBSE)</div><div class="yr">2014 · 87.4%</div></div>
+    </div>
+
+    <div class="sb-sec">
+      <div class="sb-lbl">Languages</div>
+      <div class="lang-row">
+        <div class="lang-top"><span class="lang-name">English</span><span class="lang-lvl">Read · Write · Speak</span></div>
+        <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
+      </div>
+      <div class="lang-row">
+        <div class="lang-top"><span class="lang-name">Hindi</span><span class="lang-lvl">Read · Write · Speak</span></div>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
       </div>
     </div>
 
-    <!-- Education -->
-    <div class="s-section">
-      <div class="s-label">Education</div>
-
-      <div class="edu-item">
-        <div class="degree">B.Sc. (HSE)</div>
-        <div class="inst">Annamalai University</div>
-        <div class="year">2022 · 63%</div>
-      </div>
-
-      <div class="edu-item">
-        <div class="degree">B.A. in Geography</div>
-        <div class="inst">Annamalai University</div>
-        <div class="year">2021</div>
-      </div>
-
-      <div class="edu-item">
-        <div class="degree">Diploma – Health Safety & Environment</div>
-        <div class="inst">NIFS Patna (Annamalai University)</div>
-        <div class="year">2019</div>
-      </div>
-
-      <div class="edu-item">
-        <div class="degree">Assistance of Fire Operator</div>
-        <div class="inst">NIFS Patna</div>
-        <div class="year">2019</div>
-      </div>
-
-      <div class="edu-item">
-        <div class="degree">Intermediate (BSEB)</div>
-        <div class="year">2016 · 60%</div>
-      </div>
-
-      <div class="edu-item">
-        <div class="degree">Matriculation (CBSE)</div>
-        <div class="year">2014 · 87.4%</div>
-      </div>
-    </div>
-
-    <!-- Languages -->
-    <div class="s-section">
-      <div class="s-label">Languages</div>
-      <div>
-        <div class="lang-item" style="flex-direction:column; align-items:flex-start;">
-          <div style="display:flex;justify-content:space-between;width:100%">
-            <span class="lang-name">English</span>
-            <span class="lang-level">Read · Write · Speak</span>
-          </div>
-          <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
-        </div>
-        <div class="lang-item" style="flex-direction:column; align-items:flex-start; margin-top:10px;">
-          <div style="display:flex;justify-content:space-between;width:100%">
-            <span class="lang-name">Hindi</span>
-            <span class="lang-level">Read · Write · Speak</span>
-          </div>
-          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Personal -->
-    <div class="s-section">
-      <div class="s-label">Personal</div>
-      <div class="personal-grid">
-        <div class="pd-item">
-          <div class="pd-label">Date of Birth</div>
-          <div class="pd-val">12 Dec 1998</div>
-        </div>
-        <div class="pd-item">
-          <div class="pd-label">Gender</div>
-          <div class="pd-val">Male</div>
-        </div>
-        <div class="pd-item">
-          <div class="pd-label">Nationality</div>
-          <div class="pd-val">Indian</div>
-        </div>
-        <div class="pd-item">
-          <div class="pd-label">Marital Status</div>
-          <div class="pd-val">Married</div>
-        </div>
-        <div class="pd-item" style="grid-column:1/-1">
-          <div class="pd-label">Father's Name</div>
-          <div class="pd-val">Anil Singh</div>
-        </div>
+    <div class="sb-sec">
+      <div class="sb-lbl">Personal</div>
+      <div class="pers-grid">
+        <div class="pd"><div class="pd-lbl">Date of Birth</div><div class="pd-val">12 Dec 1998</div></div>
+        <div class="pd"><div class="pd-lbl">Gender</div><div class="pd-val">Male</div></div>
+        <div class="pd"><div class="pd-lbl">Nationality</div><div class="pd-val">Indian</div></div>
+        <div class="pd"><div class="pd-lbl">Marital Status</div><div class="pd-val">Married</div></div>
+        <div class="pd" style="grid-column:1/-1"><div class="pd-lbl">Father's Name</div><div class="pd-val">Anil Singh</div></div>
       </div>
     </div>
 
   </aside>
 
-  <!-- ── MAIN ─────────────────────── -->
+  <!-- ════ MAIN ════ -->
   <main class="main">
 
-    <div class="header-accent">
-      <div class="job-code">Job Code: SIO/EHS</div>
-      <div class="header-line"></div>
+    <div class="top-bar">
+      <div class="jobcode">Job Code: SIO/EHS</div>
+      <div class="top-line"></div>
     </div>
 
-    <!-- Summary -->
-    <div class="summary-box">
-      <p>
-        Results-driven EHS/HSE professional with <strong>6+ years of progressive experience</strong> across high-risk construction, infrastructure, and airport projects. Committed to maintaining <strong>zero-accident records</strong> through proactive hazard identification, rigorous work permit systems, and continuous safety training. Adept at managing safety compliance on mega infrastructure projects with multi-crore budgets.
-      </p>
+    <div class="summary">
+      <p>Results-driven EHS/HSE professional with <strong>6+ years of progressive experience</strong> across high-risk construction, infrastructure, and airport projects. Committed to maintaining <strong>zero-accident records</strong> through proactive hazard identification, rigorous work permit systems, and continuous safety training. Adept at managing safety compliance on mega infrastructure projects with multi-crore budgets.</p>
     </div>
 
-    <!-- Experience -->
-    <section class="section">
-      <div class="section-head">
-        <div class="sh-dot"></div>
+    <!-- EXPERIENCE -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-dot"></div>
         <h2>Work Experience</h2>
-        <div class="sh-line"></div>
+        <div class="sec-line"></div>
       </div>
 
-      <!-- Current -->
-      <div class="exp-card">
-        <div class="exp-top">
-          <div>
-            <span class="exp-role">Safety Officer</span>
-            <span class="current-badge">Current</span>
-          </div>
-          <div class="exp-duration">July 2025 – Present</div>
+      <!-- Apco Infratech – Current -->
+      <div class="xcard">
+        <div class="xtop">
+          <div class="xrole">Safety Officer <span class="cbadge">Current</span></div>
+          <div class="xdur">July 2025 – Present</div>
         </div>
-        <div class="exp-company">Apco Infratech</div>
-        <div class="exp-project">📍 Jammu katra road project including flyover structure(Hill area)</div>
-        <ul class="resp-list single">
-        <li> Conducted daily safety inspections for flyover, excavation, hill-cutting, and work-at-height activities to ensure safe working conditions.</li>
-<li>Ensured proper use of PPE, barricading, permit-to-work system, and compliance with site safety procedures.</li>
-<li>Monitored safe movement of heavy vehicles and equipment on hilly roads and coordinated traffic safety arrangements.</li>
-<li>Delivered toolbox talks and safety training on fall protection, emergency response, and hazard awareness for workers.</li>
-<li>Maintained safety documentation, incident reports, inspection records, and implemented corrective actions for unsafe conditions.</li>
+        <div class="xcmp">Apco Infratech</div>
+        <div class="xproj">📍 Jammu–Katra Road Project including Flyover Structure (Hill Area), J&amp;K</div>
+        <ul class="rlist one">
+          <li>Conducted daily safety inspections for flyover, excavation, hill-cutting, and work-at-height activities to ensure safe working conditions.</li>
+          <li>Ensured proper use of PPE, barricading, permit-to-work system, and compliance with site safety procedures.</li>
+          <li>Monitored safe movement of heavy vehicles and equipment on hilly roads; coordinated traffic safety arrangements.</li>
+          <li>Delivered toolbox talks and safety training on fall protection, emergency response, and hazard awareness for workers.</li>
+          <li>Maintained safety documentation, incident reports, inspection records and implemented corrective actions for unsafe conditions.</li>
         </ul>
       </div>
 
       <!-- Dormakaba -->
-      <div class="exp-card">
-        <div class="exp-top">
-          <span class="exp-role">HSE Officer</span>
-          <div class="exp-duration">Jul 2024 – June 2025</div>
+      <div class="xcard">
+        <div class="xtop">
+          <div class="xrole">HSE Officer</div>
+          <div class="xdur">Jul 2024 – Jun 2025</div>
         </div>
-        <div class="exp-company">Dormakaba India (Payroll: RASPL)</div>
-        <div class="exp-project">📍 Installation of E-Gate – New Terminal Building, Guwahati International Airport (Client: Adani)</div>
-        <ul class="resp-list">
+        <div class="xcmp">Dormakaba India (Payroll: RASPL)</div>
+        <div class="xproj">📍 Installation of E-Gate – New Terminal Building, Guwahati International Airport (Client: Adani)</div>
+        <ul class="rlist">
           <li>Managed HSE compliance for high-security airport terminal installation project</li>
-          <li>Ensured WPS implementation for hotwork, and height work activities</li>
+          <li>Ensured WPS implementation for hotwork and height work activities</li>
           <li>Coordinated daily safety inspections and incident reporting</li>
           <li>Conducted safety training and education programs for site teams</li>
         </ul>
       </div>
 
       <!-- SP Singla -->
-      <div class="exp-card">
-        <div class="exp-top">
-          <span class="exp-role">EHS Supervisor</span>
-          <div class="exp-duration">Jul 2021 – Jul 2024</div>
+      <div class="xcard">
+        <div class="xtop">
+          <div class="xrole">EHS Supervisor</div>
+          <div class="xdur">Jul 2021 – Jul 2024</div>
         </div>
-        <div class="exp-company">SP Singla Constructions Pvt. Ltd.</div>
-        <div class="exp-project">📍 Extra-dosed PSC Bridge over River Brahmaputra, South ↔ North Guwahati (Client: PWD Assam) · Project Cost: ₹2300–2800 Crore</div>
-        <ul class="resp-list">
-          <li>Led EHS compliance on a ₹2,800 Cr mega bridge project over River Brahmaputra</li>
+        <div class="xcmp">SP Singla Constructions Pvt. Ltd.</div>
+        <div class="xproj">📍 Extra-dosed PSC Bridge over River Brahmaputra, S. ↔ N. Guwahati (Client: PWD Assam) · ₹2300–2800 Cr</div>
+        <ul class="rlist">
+          <li>Led EHS compliance on ₹2,800 Cr mega bridge project over River Brahmaputra</li>
           <li>Conducted in-depth accident investigations with root cause analysis</li>
           <li>Developed and monitored health policies and emergency response procedures</li>
           <li>Delivered safety training programs for large multi-trade workforce</li>
-          <li>Performed regular site visits with corrective and preventive action follow-ups</li>
+          <li>Performed regular site visits with corrective &amp; preventive action follow-ups</li>
           <li>Maintained all safety reports, records, and documentation</li>
         </ul>
       </div>
 
       <!-- Harsh Construction -->
-      <div class="exp-card">
-        <div class="exp-top">
-          <span class="exp-role">Safety Supervisor</span>
-          <div class="exp-duration">Jul 2019 – Jul 2021</div>
+      <div class="xcard">
+        <div class="xtop">
+          <div class="xrole">Safety Supervisor</div>
+          <div class="xdur">Jul 2019 – Jul 2021</div>
         </div>
-        <div class="exp-company">Harsh Construction Pvt. Ltd.</div>
-        <div class="exp-project">📍 New Domestic Building, ATC Tower, Technical Block & Fire Station – Kolhapur Airport</div>
-        <ul class="resp-list">
+        <div class="xcmp">Harsh Construction Pvt. Ltd.</div>
+        <div class="xproj">📍 New Domestic Building, ATC Tower, Technical Block &amp; Fire Station – Kolhapur Airport</div>
+        <ul class="rlist">
           <li>Supervised daily safety inspections across airport construction zones</li>
           <li>Issued and monitored daily work permits for all hazardous activities</li>
           <li>Managed first aid program and health monitoring for site workforce</li>
           <li>Ensured toolbox talks before every shift commencement</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <!-- Key Responsibilities -->
-    <section class="section">
-      <div class="section-head">
-        <div class="sh-dot"></div>
+    <!-- CORE RESPONSIBILITIES -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-dot"></div>
         <h2>Core Responsibilities Across Roles</h2>
-        <div class="sh-line"></div>
+        <div class="sec-line"></div>
       </div>
-      <ul class="resp-list">
+      <ul class="rlist">
         <li>Daily safety inspection and hazard identification</li>
         <li>Work permit issuance and monitoring</li>
         <li>Safety policy and procedure development</li>
-        <li>Accident & incident investigation (Root Cause Analysis)</li>
+        <li>Accident &amp; incident investigation (Root Cause Analysis)</li>
         <li>Toolbox talks and pre-shift safety briefings</li>
-        <li>Staff & worker safety training programs</li>
+        <li>Staff &amp; worker safety training programs</li>
         <li>WPS implementation (Hotwork, Confined Space, Height Work)</li>
         <li>Emergency response plan maintenance and updates</li>
         <li>Risk assessment and corrective action recommendations</li>
@@ -811,29 +663,29 @@
         <li>Health and environment policy monitoring</li>
         <li>Safety records, reports, and documentation</li>
       </ul>
-    </section>
+    </div>
 
-    <!-- Strengths & Interests -->
-    <section class="section">
-      <div class="section-head">
-        <div class="sh-dot"></div>
+    <!-- STRENGTHS & INTERESTS -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-dot"></div>
         <h2>Strengths &amp; Interests</h2>
-        <div class="sh-line"></div>
+        <div class="sec-line"></div>
       </div>
-      <div class="interest-tags">
-        <div class="interest-tag">⚡ Quick Learner</div>
-        <div class="interest-tag">⏱ Time Management</div>
-        <div class="interest-tag">🎙 Public Speaker</div>
-        <div class="interest-tag">🤝 Team Player</div>
-        <div class="interest-tag">🎵 Music</div>
-        <div class="interest-tag">🎨 Art</div>
-        <div class="interest-tag">🏅 Sports</div>
+      <div class="itags">
+        <div class="itag">⚡ Quick Learner</div>
+        <div class="itag">⏱ Time Management</div>
+        <div class="itag">🎙 Public Speaker</div>
+        <div class="itag">🤝 Team Player</div>
+        <div class="itag">🎵 Music</div>
+        <div class="itag">🎨 Art</div>
+        <div class="itag">🏅 Sports</div>
       </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <div class="resume-footer">
-      <div class="place">📍 Place: J&K, India &nbsp;·&nbsp; Date: May 2025</div>
+    <!-- FOOTER -->
+    <div class="rfooter">
+      <div class="place">📍 J&amp;K, India &nbsp;·&nbsp; Date: May 2025</div>
       <div class="sign">Ashutosh Kumar Singh</div>
     </div>
 
@@ -841,29 +693,20 @@
 </div>
 
 <script>
-  // Replace the GitHub image URL with the correct one
-  // User should update: https://raw.githubusercontent.com/YOUR-USERNAME/YOUR-REPO/main/image.jpg
-  // Animate cards on scroll
-  const cards = document.querySelectorAll('.exp-card');
-  const obs = new IntersectionObserver((entries) => {
+  const cards = document.querySelectorAll('.xcard');
+  const io = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        e.target.style.animationDelay = (i * 0.08) + 's';
-        e.target.style.animation = 'cardIn 0.5s cubic-bezier(0.16,1,0.3,1) both';
+        e.target.style.animation = `cardIn .4s cubic-bezier(.16,1,.3,1) ${i*0.06}s both`;
+        io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
-  cards.forEach(c => obs.observe(c));
+  }, { threshold: 0.05 });
+  cards.forEach(c => io.observe(c));
 
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-  `;
-  document.head.appendChild(style);
+  const s = document.createElement('style');
+  s.textContent = `@keyframes cardIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }`;
+  document.head.appendChild(s);
 </script>
-
 </body>
 </html>
