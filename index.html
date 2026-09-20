@@ -17,7 +17,7 @@
       --line: #d4cfc6;
       --card: #ffffff;
       --highlight: #fff4ed;
-      --sidebar-w: 175pt;
+      --sidebar-w: 165pt;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,7 +48,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       display: grid;
       grid-template-columns: var(--sidebar-w) 1fr;
-      overflow: hidden;
+      overflow: hidden; /* Prevents anything from spilling out */
       animation: fadeUp .6s cubic-bezier(.16,1,.3,1) both;
     }
     @keyframes fadeUp {
@@ -93,7 +93,7 @@
     }
     .sb-name h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 14pt;
+      font-size: 13.5pt;
       font-weight: 700;
       color: #fff;
       line-height: 1.15;
@@ -101,7 +101,7 @@
     }
     .sb-name .jobtitle {
       margin-top: 2pt;
-      font-size: 6pt;
+      font-size: 5.5pt;
       font-weight: 600;
       letter-spacing: .15em;
       text-transform: uppercase;
@@ -109,18 +109,18 @@
     }
 
     .sb-sec {
-      padding: 7pt 12pt;
+      padding: 6pt 10pt;
       border-bottom: 1px solid rgba(255,255,255,0.055);
     }
     .sb-sec:last-child { border-bottom: none; flex: 1; }
 
     .sb-lbl {
-      font-size: 5.5pt;
+      font-size: 5pt;
       font-weight: 600;
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--accent2);
-      margin-bottom: 5pt;
+      margin-bottom: 4pt;
       display: flex;
       align-items: center;
       gap: 5pt;
@@ -135,13 +135,13 @@
     .ci {
       display: flex;
       align-items: flex-start;
-      gap: 5pt;
+      gap: 4pt;
       margin-bottom: 3.5pt;
-      font-size: 7pt;
+      font-size: 6.5pt;
       color: #bfccd8;
       line-height: 1.3;
     }
-    .ci svg { flex-shrink:0; margin-top:1pt; opacity:.65; width: 9px; height: 9px; }
+    .ci svg { flex-shrink:0; margin-top:1pt; opacity:.65; width: 8px; height: 8px; }
     .ci a { color: var(--accent2); text-decoration:none; }
     .ci a:hover { text-decoration:underline; }
 
@@ -151,25 +151,25 @@
       background: rgba(255,255,255,0.07);
       border: .5px solid rgba(255,255,255,0.12);
       border-radius: 2px;
-      padding: 2pt 4pt;
-      font-size: 6pt;
+      padding: 1.5pt 4pt;
+      font-size: 5.5pt;
       color: #bfccd8;
       margin: 1.5pt 1.5pt 0 0;
       font-family: 'DM Mono', monospace;
     }
 
     /* Education items */
-    .edu { margin-bottom: 5pt; }
-    .edu .deg  { font-size: 7pt; color: #dde5ed; font-weight: 500; line-height: 1.2; }
-    .edu .inst { font-size: 6pt; color: var(--accent2); margin-top:1pt; }
-    .edu .yr   { font-size: 5.5pt; color: #8fa3b8; font-family:'DM Mono',monospace; margin-top:1pt; }
+    .edu { margin-bottom: 4.5pt; }
+    .edu .deg  { font-size: 6.2pt; color: #dde5ed; font-weight: 500; line-height: 1.2; }
+    .edu .inst { font-size: 5.5pt; color: var(--accent2); margin-top:1pt; }
+    .edu .yr   { font-size: 5pt; color: #8fa3b8; font-family:'DM Mono',monospace; margin-top:1pt; }
 
     /* Language bars */
-    .lang-row { margin-bottom: 4pt; }
+    .lang-row { margin-bottom: 3pt; }
     .lang-top { display: flex; justify-content: space-between; margin-bottom: 1.5pt; }
-    .lang-name { font-size: 7pt; color: #dde5ed; }
+    .lang-name { font-size: 6.5pt; color: #dde5ed; }
     .lang-lvl  { font-size: 5.5pt; color: #8fa3b8; font-style:italic; }
-    .lang-bar  { height: 2.5px; background: rgba(255,255,255,0.09); border-radius: 2px; overflow: hidden; }
+    .lang-bar  { height: 2px; background: rgba(255,255,255,0.09); border-radius: 2px; overflow: hidden; }
     .lang-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
@@ -177,25 +177,25 @@
     }
 
     /* Personal grid */
-    .pers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5pt 5pt; }
-    .pd .pd-lbl { font-size: 5pt; text-transform:uppercase; letter-spacing:.09em; color:#8fa3b8; }
-    .pd .pd-val { font-size: 6.5pt; color:#bfccd8; margin-top:1pt; }
+    .pers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3pt 5pt; }
+    .pd .pd-lbl { font-size: 4.5pt; text-transform:uppercase; letter-spacing:.09em; color:#8fa3b8; }
+    .pd .pd-val { font-size: 6pt; color:#bfccd8; margin-top:1pt; }
 
     /* ══════════════════════════════════════════════
        MAIN
     ══════════════════════════════════════════════ */
     .main {
-      padding: 12pt 14pt 10pt;
+      padding: 10pt 12pt 8pt;
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
     /* Top bar */
-    .top-bar { display: flex; align-items: center; gap: 6pt; margin-bottom: 5pt; }
+    .top-bar { display: flex; align-items: center; gap: 6pt; margin-bottom: 4pt; }
     .jobcode {
       font-family: 'DM Mono', monospace;
-      font-size: 6pt;
+      font-size: 5.5pt;
       color: var(--accent);
       background: var(--highlight);
       border: .5px solid #f0c09a;
@@ -210,23 +210,23 @@
     .summary {
       background: var(--highlight);
       border-left: 2.5px solid var(--accent);
-      padding: 5pt 9pt;
+      padding: 4.5pt 8pt;
       border-radius: 0 3px 3px 0;
-      margin-bottom: 6pt;
+      margin-bottom: 5pt;
     }
-    .summary p { font-size: 7pt; line-height: 1.55; color: #3d3028; text-align: justify; }
+    .summary p { font-size: 6.5pt; line-height: 1.5; color: #3d3028; text-align: justify; }
 
     /* Section Headers */
-    .sec-head { display: flex; align-items: center; gap: 5pt; margin-bottom: 4.5pt; margin-top: 4pt; }
+    .sec-head { display: flex; align-items: center; gap: 5pt; margin-bottom: 3.5pt; margin-top: 3pt; }
     .sec-head h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 9.5pt;
+      font-size: 8.5pt;
       font-weight: 700;
       color: var(--steel);
       letter-spacing: -.01em;
       white-space: nowrap;
     }
-    .sec-dot { width: 4.5px; height: 4.5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .sec-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     .sec-line { flex:1; height:1px; background: var(--line); }
 
     /* Experience card */
@@ -234,15 +234,15 @@
       border: .8px solid var(--line);
       border-radius: 3px;
       background: #fafaf8;
-      padding: 5.5pt 8pt; 
-      margin-bottom: 4.5pt;
+      padding: 4.5pt 7pt; 
+      margin-bottom: 3.5pt;
       position: relative;
     }
     .xcard:last-child { margin-bottom: 0; }
     .xcard::before {
       content:'';
       position:absolute;
-      left:0; top:6pt; bottom:6pt;
+      left:0; top:5pt; bottom:5pt;
       width:2.5px;
       background: var(--accent);
       border-radius:0 2px 2px 0;
@@ -257,10 +257,10 @@
       align-items: flex-start;
       flex-wrap: wrap;
       gap: 3pt;
-      margin-bottom: 2pt;
+      margin-bottom: 1.5pt;
     }
     .xrole {
-      font-size: 8pt;
+      font-size: 7.5pt;
       font-weight: 600;
       color: var(--ink);
       display: flex;
@@ -270,15 +270,15 @@
     }
     .xdur {
       font-family: 'DM Mono', monospace;
-      font-size: 5pt;
+      font-size: 4.8pt;
       color: var(--accent);
       background: var(--highlight);
       padding: 1.5pt 4pt;
       border-radius: 2px;
       white-space: nowrap;
     }
-    .xcmp  { font-size: 7pt; font-weight: 600; color: var(--steel); margin-bottom: 1.5pt; }
-    .xproj { font-size: 6pt; color: var(--muted); margin-bottom: 3.5pt; font-style: italic; line-height: 1.35; }
+    .xcmp  { font-size: 6.5pt; font-weight: 600; color: var(--steel); margin-bottom: 1.5pt; }
+    .xproj { font-size: 5.5pt; color: var(--muted); margin-bottom: 2.5pt; font-style: italic; line-height: 1.35; }
 
     /* Current badge */
     .cbadge {
@@ -312,50 +312,50 @@
       list-style: none;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5pt;
+      gap: 1.5pt;
     }
-    .rlist.two-col { grid-template-columns: 1fr 1fr; gap: 2.5pt 10pt; }
+    .rlist.two-col { grid-template-columns: 1fr 1fr; gap: 1.5pt 10pt; }
     .rlist li {
-      font-size: 6.2pt;
+      font-size: 5.8pt;
       color: #333333;
-      line-height: 1.45;
+      line-height: 1.4;
       display: flex;
       align-items: flex-start;
-      gap: 3.5pt;
+      gap: 3pt;
     }
     .rlist li::before {
       content: '▸';
       color: var(--accent);
       flex-shrink: 0;
-      font-size: 5.5pt;
+      font-size: 4.5pt;
       margin-top: 1.5pt;
     }
 
     /* Strengths/Interests */
-    .itags { display:flex; flex-wrap:wrap; gap:3.5pt; margin-bottom: 5pt; }
+    .itags { display:flex; flex-wrap:wrap; gap:3pt; margin-bottom: 3pt; }
     .itag {
       display:flex;
       align-items:center;
-      gap:2.5pt;
+      gap:2pt;
       background: var(--highlight);
       border: .5px solid #f0c09a;
       border-radius: 12pt;
-      padding: 2pt 6pt;
-      font-size: 5.5pt;
+      padding: 1.5pt 5pt;
+      font-size: 5.2pt;
       color: #6b4226;
     }
 
     /* Footer */
     .rfooter {
-      margin-top: auto;
-      padding-top: 6pt;
+      margin-top: auto; /* Pushes footer to the bottom naturally without overflowing */
+      padding-top: 4pt;
       border-top: .8px solid var(--line);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .rfooter .place { font-size: 5.5pt; color:var(--muted); }
-    .rfooter .sign  { font-family:'Playfair Display',serif; font-size: 8pt; color: var(--steel); font-style: italic; }
+    .rfooter .place { font-size: 5.2pt; color:var(--muted); }
+    .rfooter .sign  { font-family:'Playfair Display',serif; font-size: 7.5pt; color: var(--steel); font-style: italic; }
 
     /* ══════════════════════════════════════════════
        PRINT — A4 exact
@@ -413,21 +413,21 @@
       .lang-lvl { font-size: 8pt; }
       .pd .pd-lbl { font-size: 8pt; }
       .pd .pd-val { font-size: 9.5pt; }
-      .main { padding: 16pt; }
+      .main { padding: 14pt; }
       .top-bar { margin-bottom: 0; }
       .jobcode { font-size: 8.5pt; }
-      .summary p { font-size: 9.5pt; line-height: 1.6; }
-      .sec-head h2 { font-size: 13pt; }
-      .xcard { margin-bottom: 12pt; }
+      .summary p { font-size: 9pt; line-height: 1.5; }
+      .sec-head h2 { font-size: 12pt; }
+      .xcard { margin-bottom: 10pt; }
       .xrole { font-size: 11pt; }
       .xcmp  { font-size: 10pt; }
       .xproj { font-size: 8.5pt; }
       .xdur  { font-size: 8pt; }
       .rlist.two-col { grid-template-columns: 1fr; }
-      .rlist li { font-size: 9pt; margin-bottom: 4pt; }
-      .itag { font-size: 9pt; padding: 5pt 12pt; }
-      .rfooter .place { font-size: 9pt; }
-      .rfooter .sign  { font-size: 12pt; }
+      .rlist li { font-size: 8.5pt; margin-bottom: 3pt; }
+      .itag { font-size: 9pt; padding: 4pt 10pt; }
+      .rfooter .place { font-size: 8.5pt; }
+      .rfooter .sign  { font-size: 11pt; }
       .sb-sec { padding: 12pt 16pt; }
     }
   </style>
@@ -550,7 +550,7 @@
       </div>
 
       <div class="summary">
-        <p>Results-driven EHS/HSE professional with <strong>7 years of progressive experience</strong> across high-risk bridge construction, civil infrastructure, and airport projects. Proven track record in fostering a proactive safety culture, ensuring strict regulatory compliance, and aligning contractor operations with global HSE standards. Dedicated to maintaining <strong>zero-accident records</strong> through rigorous hazard identification, comprehensive permit-to-work systems, continuous safety training, and precise risk management in multi-crore mega projects.</p>
+        <p>Results-driven EHS/HSE professional with <strong>7 years of progressive experience</strong> across high-risk bridge construction, civil infrastructure, and airport projects. Proven track record in fostering a proactive safety culture, ensuring strict regulatory compliance, and aligning contractor operations with global HSE standards. Dedicated to maintaining <strong>zero-accident records</strong> through rigorous hazard identification, comprehensive permit-to-work systems, and precise risk management.</p>
       </div>
     </div>
 
@@ -571,11 +571,10 @@
         <div class="xcmp">Apco Infratech</div>
         <div class="xproj">📍 Jammu–Katra Road Project including Flyover Structure (Hill Area), J&amp;K</div>
         <ul class="rlist">
-          <li>Conducting daily safety inspections for flyover erection, deep excavation, hill-cutting, and complex work-at-height activities.</li>
-          <li>Ensuring 100% compliance with PPE requirements, hard barricading, and the Permit-to-Work (PTW) system across all active zones.</li>
-          <li>Monitoring the safe movement of heavy earth-moving equipment on steep, hilly terrains and coordinating robust traffic safety plans.</li>
-          <li>Performing monthly safety audits, presenting EHS performance metrics to site management, and closing non-compliance gaps.</li>
-          <li>Delivering targeted toolbox talks (TBT) and specialized training on fall protection, emergency response, and localized environmental hazards.</li>
+          <li>Conducting daily safety inspections for flyover erection, deep excavation, hill-cutting, and work-at-height activities.</li>
+          <li>Ensuring 100% compliance with PPE, hard barricading, and Permit-to-Work (PTW) systems across active zones.</li>
+          <li>Monitoring safe movement of heavy earth-moving equipment on steep terrains and coordinating traffic safety plans.</li>
+          <li>Delivering targeted toolbox talks (TBT) and specialized training on fall protection and emergency response.</li>
         </ul>
       </div>
 
@@ -588,11 +587,10 @@
         <div class="xcmp">JLN Infra Projects</div>
         <div class="xproj">📍 Residential High-Rise Building (MIVAN Construction), Bengaluru, Karnataka</div>
         <ul class="rlist">
-          <li>Led safety oversight for MIVAN formwork assembly, reinforced concrete pouring, tower crane operations, and passenger hoists.</li>
-          <li>Implemented rigorous edge protection, structural safety net installations, and continuous fall prevention monitoring for high-rise zones.</li>
-          <li>Organized periodic safety mock drills and coordinated with local emergency response services to ensure operational readiness.</li>
-          <li>Prepared Job Safety Analysis (JSA) and Hazard Identification & Risk Assessment (HIRA) for critical lifting and electrical operations.</li>
-          <li>Maintained comprehensive HSE documentation, led incident investigations, and ensured rapid closure of audit observations.</li>
+          <li>Led safety oversight for MIVAN formwork assembly, concrete pouring, tower cranes, and passenger hoists.</li>
+          <li>Implemented rigorous edge protection, safety nets, and fall prevention monitoring for high-rise zones.</li>
+          <li>Prepared JSA and HIRA for critical lifting operations and organized periodic safety mock drills.</li>
+          <li>Maintained HSE documentation, led incident investigations, and ensured rapid closure of audit observations.</li>
         </ul>
       </div>
 
@@ -605,10 +603,10 @@
         <div class="xcmp">Dormakaba India (Payroll: RASPL)</div>
         <div class="xproj">📍 Installation of E-Gate – New Terminal Building, Guwahati International Airport (Client: Adani)</div>
         <ul class="rlist">
-          <li>Managed strict HSE compliance for highly sensitive, high-security airport terminal mechanical and electrical installations.</li>
-          <li>Liaised directly with airport security and operations management to ensure zero disruption during critical operational phases.</li>
-          <li>Enforced stringent Hot Work and Height Work permit systems in enclosed, highly trafficked public terminal areas.</li>
-          <li>Conducted extensive safety orientation programs for specialized vendor teams handling delicate automated equipment.</li>
+          <li>Managed strict HSE compliance for high-security airport terminal mechanical and electrical installations.</li>
+          <li>Liaised with airport security and operations to ensure zero disruption during critical operational phases.</li>
+          <li>Enforced stringent Hot Work and Height Work permit systems in enclosed public terminal areas.</li>
+          <li>Conducted safety orientation programs for specialized vendor teams handling delicate automated equipment.</li>
         </ul>
       </div>
 
@@ -621,11 +619,10 @@
         <div class="xcmp">SP Singla Constructions Pvt. Ltd.</div>
         <div class="xproj">📍 Extra-dosed PSC Bridge over River Brahmaputra, S. ↔ N. Guwahati · ₹2300–2800 Cr</div>
         <ul class="rlist">
-          <li>Spearheaded on-site EHS compliance for a ₹2,800 Cr mega bridge project, managing a massive multi-trade workforce.</li>
-          <li>Monitored marine safety protocols, barge operations, and heavy lifting activities during deep-water river piling phases.</li>
-          <li>Conducted thorough accident investigations utilizing Root Cause Analysis (RCA) techniques to prevent recurrence.</li>
-          <li>Developed and audited health policies, waste management plans, and environmental compliance procedures at the riverbank site.</li>
-          <li>Delivered comprehensive safety induction and continuous education programs for over 500+ daily wage workers and engineers.</li>
+          <li>Spearheaded on-site EHS compliance for a ₹2,800 Cr mega bridge project with a massive multi-trade workforce.</li>
+          <li>Monitored marine safety protocols, barge operations, and heavy lifting during deep-water river piling.</li>
+          <li>Conducted thorough accident investigations utilizing Root Cause Analysis (RCA) techniques.</li>
+          <li>Delivered comprehensive safety induction and education programs for 500+ daily wage workers and engineers.</li>
         </ul>
       </div>
 
@@ -638,10 +635,10 @@
         <div class="xcmp">Harsh Construction Pvt. Ltd.</div>
         <div class="xproj">📍 New Domestic Bldg, ATC Tower & Fire Station – Kolhapur Airport</div>
         <ul class="rlist">
-          <li>Supervised daily site safety inspections across concurrent airport construction zones (ATC, Terminal, Fire Station).</li>
-          <li>Implemented strict fire safety protocols, including the establishment of temporary fire hydrant networks and evacuation routes.</li>
-          <li>Managed the site first aid program, health monitoring camps, and hygiene inspections for worker accommodations.</li>
-          <li>Authorized and actively monitored daily work permits for excavation, scaffolding erection, and structural steel works.</li>
+          <li>Supervised daily site safety inspections across concurrent airport construction zones (ATC, Terminal, Fire).</li>
+          <li>Implemented strict fire safety protocols, including temporary fire hydrant networks and evacuation routes.</li>
+          <li>Managed the site first aid program, health monitoring camps, and hygiene inspections for workers.</li>
+          <li>Authorized and actively monitored daily work permits for excavation, scaffolding, and structural steel works.</li>
         </ul>
       </div>
     </div>
